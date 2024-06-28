@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import GoogleAuth from "../components/GoogleAuth";
 import {
   signInStart,
   signInSuccess,
@@ -40,7 +41,7 @@ function Sign_In() {
         return;
       }
 
-      dispatch(signInSuccess());
+      dispatch(signInSuccess(data));
       navigate("/");
     } catch (error) {
       dispatch(SignInFailure(error.message));
@@ -72,6 +73,7 @@ function Sign_In() {
         >
           {loading ? "loading..." : "Sign In"}
         </button>
+        <GoogleAuth/>
       </form>
       <div className="flex gap-2 mt-5">
         <p>Dont have an account?</p>
