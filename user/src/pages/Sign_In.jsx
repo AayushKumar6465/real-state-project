@@ -37,7 +37,7 @@ function Sign_In() {
 
       // If signin fails, show error message and return
       if (data.success === false) {
-        dispatch(SignInFailure(data.message));  
+        dispatch(SignInFailure(data.message));
         return;
       }
 
@@ -73,7 +73,7 @@ function Sign_In() {
         >
           {loading ? "loading..." : "Sign In"}
         </button>
-        <GoogleAuth/>
+        <GoogleAuth />
       </form>
       <div className="flex gap-2 mt-5">
         <p>Dont have an account?</p>

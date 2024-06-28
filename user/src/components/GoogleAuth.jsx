@@ -28,7 +28,7 @@ export default function GoogleAuth() {
       });
       const data = await res.json();
       dispatch(signInSuccess(data));
-      navigate('/');
+      navigate("/");
     } catch (error) {
       console.log("could not sign in the google", error);
     }
