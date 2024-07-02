@@ -3,12 +3,14 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import userRouter from './routes/user_route.js';
 import authRouter from './routes/auth_route.js';
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 
 const app = express(); // Initialize Express app
 
 app.use(express.json()); // Middleware to parse JSON bodies
+app.use(cookieParser());// middleware to parse cookie
 
 const mongoURI = process.env.MONGO_URI; // MongoDB connection string
 
