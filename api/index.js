@@ -4,11 +4,12 @@ import dotenv from 'dotenv';
 import userRouter from './routes/user_route.js';
 import authRouter from './routes/auth_route.js';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 
 dotenv.config();
 
 const app = express(); // Initialize Express app
-
+app.use(cors());
 app.use(express.json()); // Middleware to parse JSON bodies
 app.use(cookieParser());// middleware to parse cookie
 
@@ -27,7 +28,7 @@ const connectDB = async () => {
 
 connectDB(); // Connect to the database
 
-// other routes here
+// other routes here and setting the port
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 
