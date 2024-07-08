@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import userRouter from './routes/user_route.js';
 import authRouter from './routes/auth_route.js';
+import listingRouter from './routes/listing_route.js';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 
@@ -34,7 +35,9 @@ app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 
 app.use('/api/user', userRouter); // Create a Test API Route
 
-app.use('/api/auth', authRouter); //Sign Up and Sign In Api Route
+app.use('/api/auth', authRouter); // Sign Up and Sign In Api Route
+
+app.use('/api/listing', listingRouter); // Listing Api Route
 
 //Creating MiddleWare For Better Error Handling
 app.use((err, req, res, next) => {
