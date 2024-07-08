@@ -6,6 +6,7 @@ import Profile from "./pages/Profile.jsx";
 import SignIn from "./pages/Sign_In.jsx";
 import SignUp from "./pages/Sign_Up.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
+import CreateListing from "./pages/CreateListing.jsx";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/sign-up" element={<SignUp />} />
         <Route element={<PrivateRoute/>}>
           <Route path="/profile" element={<Profile />} />
+          <Route path="/create-listing" element={<CreateListing />}/>
         </Route>
       </Routes>
     </Router>
