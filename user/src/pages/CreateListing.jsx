@@ -169,7 +169,7 @@ export default function CreateListing() {
             className="border p-3 rounded-lg"
             id="name"
             maxLength="62"
-            minLength="10"
+            minLength="5"
             required
             onChange={handleChange}
             value={formData.name}
@@ -250,7 +250,7 @@ export default function CreateListing() {
                 type="number"
                 id="bedrooms"
                 min="1"
-                max="10"
+                max="20"
                 required
                 className="p-3 border-cyan-300 rounded-2xl"
                 onChange={handleChange}
@@ -263,7 +263,7 @@ export default function CreateListing() {
                 type="number"
                 id="bathrooms"
                 min="1"
-                max="10"
+                max="20"
                 required
                 className="p-3"
                 onChange={handleChange}
@@ -275,8 +275,8 @@ export default function CreateListing() {
               <input
                 type="number"
                 id="regularPrice"
-                min="50"
-                max="1000"
+                min="5000"
+                max="1000000000"
                 required
                 className="p-3 rounded-2xl w-60"
                 onChange={handleChange}
@@ -293,7 +293,7 @@ export default function CreateListing() {
                   type="number"
                   id="discountPrice"
                   min="0"
-                  max="200000"
+                  max="2000000"
                   required
                   className="p-3 rounded-2xl w-60"
                   onChange={handleChange}
