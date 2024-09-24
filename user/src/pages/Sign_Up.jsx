@@ -2,28 +2,24 @@
 import { Link, useNavigate } from "react-router-dom";
 import GoogleAuth from "../components/GoogleAuth";
 
-// Functional component for Sign Up
 function Sign_Up() {
-  const [formData, setformData] = useState({}); // State to hold form data
+  const [formData, setformData] = useState({});
   
-  const [error, setError] = useState(null); // State to hold error message
+  const [error, setError] = useState(null); 
   
-  const [loading, setLoading] = useState(false);  // State to show loading state
+  const [loading, setLoading] = useState(false);  
   
-  const navigate = useNavigate(); // Navigation hook
+  const navigate = useNavigate(); 
 
-  // Function to handle form input change
   const handleChange = (e) => {
-    setformData({ ...formData, [e.target.id]: e.target.value });  // Update formData state with new value
+    setformData({ ...formData, [e.target.id]: e.target.value });
   };
 
-  // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      setLoading(true); // Set loading state to true
-      
-      // Make a POST request to signup API
+      setLoading(true); 
+
       const res = await fetch("/api/auth/signup", {
         method: "POST",
         headers: {
@@ -32,28 +28,24 @@ function Sign_Up() {
         body: JSON.stringify(formData),
       });
       
-      const data = await res.json();  // Parse response as JSON
+      const data = await res.json();  
       
-      // If signup fails, set error message and return
       if (data.success === false) {
         setError(data.message);
         setLoading(false);
         return;
       }
       
-      // On success, navigate to signin page
       setLoading(false);
       setError(null);
       navigate("/sign-in");
 
     } catch (error) {
-      // On error, set error message
       setLoading(false);
       setError(error.message);
     }
   };
 
-  // Render the Sign Up form
   return (
     <div className="p-3 max-w-lg mx-auto">
       <h1 className="text-3xl text-center font-semibold my-7">Sign Up</h1>

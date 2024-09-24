@@ -8,24 +8,21 @@ import {
   SignInFailure,
 } from "../redux/users/userSlice";
 
-// Functional component for Sign In
 function Sign_In() {
-  const [formData, setformData] = useState({}); // State to hold form data
-  const { loading, error } = useSelector((state) => state.user); // State to show loading state
-  const navigate = useNavigate(); // Navigation hook
+  const [formData, setformData] = useState({}); 
+  const { loading, error } = useSelector((state) => state.user); 
+  const navigate = useNavigate(); 
   const dispatch = useDispatch();
-  // Function to handle form input change
+  
   const handleChange = (e) => {
-    setformData({ ...formData, [e.target.id]: e.target.value }); // Update formData state with new value
+    setformData({ ...formData, [e.target.id]: e.target.value }); 
   };
 
-  // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       dispatch(signInStart());
 
-      // Make a POST request to signin API
       const res = await fetch("/api/auth/signin", {
         method: "POST",
         headers: {
@@ -33,9 +30,8 @@ function Sign_In() {
         },
         body: JSON.stringify(formData),
       });
-      const data = await res.json(); // Parse response as JSON
+      const data = await res.json(); 
 
-      // If signin fails, show error message and return
       if (data.success === false) {
         dispatch(SignInFailure(data.message));
         return;
@@ -48,7 +44,6 @@ function Sign_In() {
     }
   };
 
-  // Render the Sign In form
   return (
     <div className="p-3 max-w-lg mx-auto">
       <h1 className="text-3xl text-center font-semibold my-7">Sign In</h1>
